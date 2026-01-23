@@ -11,3 +11,6 @@ Automatically generates document annotation schemas through multi-granularity pa
 The core retrieval engine that combines semantic understanding with structured query execution. By leveraging annotation structures instead of vector embeddings, SSR achieves precise semantic matching, seamlessly completing attribute value extraction, table generation, and step-by-step SQL-based reasoning without frequent reliance on large language model interventions.
 
 ## System Architecture
+<div align="center">
+  <img src="figs/pipeline.png" width="65%" height="65%"/>
+</div>
