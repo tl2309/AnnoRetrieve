@@ -28,7 +28,7 @@ annolindex/
 
 ### Prerequisites
 - Python 3.9+
-- OpenAI API key (for GPT‑4o) – *or set `USE_MOCK_LLM = True` for demonstration*
+- OpenAI API key (for GPT‑4o)
 
 ### Steps
 ```bash
@@ -112,7 +112,6 @@ Edit `config.py` to set:
 **Example**:
 ```python
 OPENAI_KEY = "sk-..."
-USE_MOCK_LLM = False   # set True to avoid API calls (for testing)
 ```
 
 ---
@@ -170,8 +169,6 @@ Modify the `_extract_attribute` method in `query_engine.py`:
 
 We reused the exact query sets from the QUEST system (provided in `data/queries/*.txt`) to ensure fair comparison.  
 To reproduce the paper’s results:
-- Use the **real LCR, WikiText, SWDE** corpora (available from the QUEST repository).
-- Set `USE_MOCK_LLM = False` and provide your OpenAI key.
 - Run `main.py` – the system will output F1 scores and LLM token consumption (approximated by call count).
 
 ---
