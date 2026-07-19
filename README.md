@@ -8,18 +8,18 @@
 
 ```
 annolindex/
-├── config.py                 # Global configuration (paths, thresholds, LLM settings)
+├── config.py                 # Global configuration
 ├── data_loader.py            # Load raw documents, ground truth CSVs, and query files
-├── utils.py                  # Normalisation utilities (dates, numbers, strings)
-├── llm.py                    # OpenAI API wrapper (with retry logic)
-├── cal_sel.py                # Selectivity calculation (from QUEST, reused)
+├── utils.py                  # Normalisation utilities 
+├── llm.py                    # OpenAI API wrapper 
+├── cal_sel.py                # Selectivity calculation 
 ├── util_order.py             # SQL parsing, filter ordering, Boolean evaluation
 ├── schema_induction.py       # SchemaLoop: three‑layer schema induction with verification
 ├── annotation_index.py       # Structured annotation index with virtual fields & promotion
 ├── query_engine.py           # Query parser, executor, and EXTRACT operator
 ├── evaluator.py              # Precision/Recall/F1 calculation against ground truth
-├── main.py                   # End‑to‑end experiment runner
-└── README.md                 # This file
+├── main.py                   # 
+└── README.md                 # 
 ```
 
 ---
@@ -54,49 +54,6 @@ transformers==4.31.0
 cupy==13.0.0
 nltk==3.8.1
 ```
-
----
-
-## 📂 Data Preparation
-
-Place your document collections in the following directory structure:
-
-```
-data/
-├── raw/
-│   ├── lcr/                 # Legal case reports (each file a .txt)
-│   │   ├── case001.txt
-│   │   ├── case002.txt
-│   │   └── ...
-│   ├── wikitext/            # Wikipedia‑style articles (players, teams, etc.)
-│   │   ├── player001.txt
-│   │   └── ...
-│   └── swde/                # Web pages (universities, movies, etc.)
-│       ├── page001.txt
-│       └── ...
-├── ground_truth/            # (Optional) CSV files with per‑document attribute values
-│   ├── lcr.csv
-│   ├── wikitext.csv
-│   └── swde.csv
-└── queries/                 # SQL query files (one query per line)
-    ├── lcr.txt
-    ├── wikitext.txt
-    └── swde.txt
-```
-
-### Ground Truth CSV Format
-Each CSV must contain a column `doc_id` matching the document filenames (without `.txt`), followed by attribute columns. Example (`lcr.csv`):
-
-| doc_id   | court_name     | hearing_year | judgment_year | verdict   |
-|----------|----------------|--------------|---------------|-----------|
-| case001  | Federal Court  | 2006         | 2007          | dismissed |
-| case002  | Supreme Court  | 2009         | 2009          | upheld    |
-
-If ground truth is not provided, the system will still run but skip evaluation.
-
-### Query Files
-Each `.txt` file contains one SQL query per line. Comments (lines starting with `...` or `--`) are ignored.  
-The queries must reference the dataset name (e.g., `FROM LCR`, `FROM WikiText`, `FROM SWDE`) as shown in the sample files provided.
 
 ---
 
@@ -187,26 +144,3 @@ We welcome contributions! Please open an issue or pull request for:
 This project is released under the MIT License.
 
 ---
-
-## 📖 Citation
-
-If you use this code in your research, please cite the original paper:
-
-```
-@inproceedings{annolindex2027,
-  author    = {Anonymous Author(s)},
-  title     = {Structure-then-Query: Enabling Precise Analytical Queries over Unstructured Documents},
-  booktitle = {Proceedings of SIGMOD 2027},
-  year      = {2027},
-}
-```
-
----
-
-## 💬 Contact
-
-For questions or issues, please open a GitHub issue or contact the authors via the paper’s anonymous submission system.
-
----
-
-*Happy querying!*
